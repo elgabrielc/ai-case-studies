@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comet Browser — Case Study: Gabriel Casalduc</title>
+  <meta name="description" content="How Gabriel Casalduc used Perplexity Comet to turn a live Gmail thread into a structured, actionable outreach workflow.">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=zodiak@400,700&display=swap" rel="stylesheet">
+  <style>
+    :root,[data-theme="light"]{
+      --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
+      --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
+      --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
+      --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.75rem);
+      --sp1:.25rem;--sp2:.5rem;--sp3:.75rem;--sp4:1rem;--sp5:1.25rem;--sp6:1.5rem;
+      --sp8:2rem;--sp10:2.5rem;--sp12:3rem;--sp16:4rem;--sp20:5rem;--sp24:6rem;
+      --bg:#f7f6f2;--surf:#f9f8f5;--surf2:#fbfbf9;--surfoff:#f0ede8;
+      --bdr:color-mix(in oklab,#28251d 14%,transparent);
+      --div:color-mix(in oklab,#28251d 10%,transparent);
+      --txt:#28251d;--muted:#6b6760;--faint:#aaa89f;--inv:#f9f8f4;
+      --pri:#01696f;--pri-h:#0c4e54;--pri-s:#d6e9e6;
+      --gold-s:#efe5c7;--blue-s:#dce8ef;
+      --r-sm:.375rem;--r-md:.75rem;--r-lg:1rem;--r-xl:1.25rem;--r-full:999px;
+      --sh-sm:0 1px 2px rgba(28,24,18,.05);--sh-md:0 8px 24px rgba(28,24,18,.08);
+      --w:1040px;--body:'General Sans',Inter,sans-serif;--disp:'Zodiak',Georgia,serif;
+      --ease:180ms cubic-bezier(.16,1,.3,1);
+    }
+    [data-theme="dark"]{
+      --bg:#171614;--surf:#1d1c1a;--surf2:#23221f;--surfoff:#2a2926;
+      --bdr:rgba(255,255,255,.09);--div:rgba(255,255,255,.07);
+      --txt:#d3d0ca;--muted:#a39f95;--faint:#797570;--inv:#1a1917;
+      --pri:#55a3ab;--pri-h:#7dbcc3;--pri-s:#243739;
+      --gold-s:#3a3526;--blue-s:#22303a;
+      --sh-sm:0 1px 2px rgba(0,0,0,.25);--sh-md:0 8px 24px rgba(0,0,0,.32);
+    }
+    *,::before,::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{min-height:100vh;font-family:var(--body);font-size:var(--text-base);line-height:1.65;background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased}
+    img,svg{display:block;max-width:100%}
+    a{color:inherit}
+    button{font:inherit;border:none;background:none;cursor:pointer}
+    .skip{position:absolute;left:1rem;top:-40px;padding:.5rem 1rem;background:var(--pri);color:var(--inv);border-radius:var(--r-sm);z-index:100}
+    .skip:focus{top:1rem}
+    .w{max-width:var(--w);margin:0 auto;padding:0 var(--sp4)}
+    .hdr{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--bg) 88%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--div)}
+    .hdr-in{display:flex;align-items:center;justify-content:space-between;padding:var(--sp4) 0;gap:var(--sp4)}
+    .logo{display:flex;align-items:center;gap:var(--sp3);text-decoration:none}
+    .logo-mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--pri-s),var(--surf2));border:1px solid color-mix(in oklab,var(--pri) 18%,var(--bdr));display:grid;place-items:center}
+    .logo-mark svg{color:var(--pri);width:20px;height:20px}
+    .logo-text{display:grid;gap:1px}
+    .kicker{font-size:var(--text-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .logo-name{font-size:var(--text-sm);font-weight:600}
+    .toggle{min-width:44px;min-height:44px;border-radius:var(--r-full);border:1px solid var(--bdr);background:var(--surf);color:var(--txt);display:grid;place-items:center;transition:background var(--ease),border-color var(--ease)}
+    .toggle:hover{border-color:var(--pri)}
+    main{padding:var(--sp12) 0 var(--sp20)}
+    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--sp8);align-items:end;padding-bottom:var(--sp12)}
+    .eyebrow{display:inline-flex;align-items:center;gap:var(--sp2);padding:var(--sp1) var(--sp3);font-size:var(--text-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--pri);background:var(--pri-s);border-radius:var(--r-full);margin-bottom:var(--sp4)}
+    h1{font-family:var(--disp);font-size:var(--text-2xl);line-height:1.06;letter-spacing:-.03em;max-width:13ch;font-weight:700}
+    .lede{margin-top:var(--sp5);max-width:58ch;color:var(--muted);font-size:var(--text-base)}
+    .stat-card{background:linear-gradient(160deg,var(--surf),var(--surf2));border:1px solid var(--bdr);border-radius:var(--r-xl);padding:var(--sp6);box-shadow:var(--sh-sm)}
+    .stat-card p{font-size:var(--text-sm);color:var(--muted);margin-bottom:var(--sp4)}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp3)}
+    .stat{padding:var(--sp4);border-radius:var(--r-lg);background:var(--bg);border:1px solid var(--bdr)}
+    .stat strong{display:block;font-size:var(--text-lg);line-height:1.1;color:var(--txt)}
+    .stat span{display:block;font-size:var(--text-xs);color:var(--muted);margin-top:var(--sp1)}
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp5)}
+    .card{padding:var(--sp6);background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r-xl);box-shadow:var(--sh-sm)}
+    .card h2{font-family:var(--disp);font-size:var(--text-xl);line-height:1.08;margin-bottom:var(--sp4)}
+    .card p{color:var(--muted);max-width:66ch}
+    .card p+p{margin-top:var(--sp3)}
+    .steps{display:grid;gap:0}
+    .step{display:grid;grid-template-columns:2rem 1fr;gap:var(--sp4);padding:var(--sp4) 0;border-top:1px solid var(--div);align-items:start}
+    .step:first-child{border-top:none;padding-top:0}
+    .step-n{width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;background:var(--pri-s);color:var(--pri);font-weight:700;font-size:var(--text-sm);margin-top:2px;flex-shrink:0}
+    .step h3{font-size:var(--text-base);font-weight:600;margin-bottom:var(--sp1)}
+    .step p{color:var(--muted);font-size:var(--text-sm)}
+    .diagram{margin-top:var(--sp5);padding:var(--sp5);background:linear-gradient(170deg,var(--surf2),var(--surf));border:1px solid var(--bdr);border-radius:var(--r-xl)}
+    .diagram svg{width:100%;height:auto}
+    .pullquote{padding:var(--sp8) var(--sp8);border-radius:var(--r-xl);background:linear-gradient(135deg,var(--pri-s),transparent 55%),var(--surf);border:1px solid color-mix(in oklab,var(--pri) 24%,var(--bdr));margin-top:var(--sp5)}
+    .pullquote p{font-family:var(--disp);font-size:clamp(1.3rem,1rem + 1.2vw,2rem);line-height:1.25;color:var(--txt);max-width:28ch}
+    .pullquote cite{display:block;margin-top:var(--sp3);font-size:var(--text-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-style:normal}
+    table{border-collapse:collapse;width:100%;margin-top:var(--sp4)}
+    th,td{padding:var(--sp3) var(--sp4);text-align:left;border-bottom:1px solid var(--div);font-size:var(--text-sm)}
+    th{font-weight:600;color:var(--muted);letter-spacing:.06em;font-size:var(--text-xs);text-transform:uppercase}
+    td code{font-family:ui-monospace,monospace;font-size:.85em;background:var(--surfoff);padding:.1em .35em;border-radius:.25rem;color:var(--pri)}
+    .out3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp4);margin-top:var(--sp5)}
+    .mark-card{margin-top:var(--sp5);padding:var(--sp6);border-radius:var(--r-xl);background:var(--surf);border:1px solid var(--bdr);display:flex;align-items:flex-start;gap:var(--sp5)}
+    .mark-badge{width:48px;height:48px;border-radius:var(--r-lg);background:var(--pri-s);display:grid;place-items:center;flex-shrink:0}
+    .mark-badge svg{color:var(--pri);width:24px;height:24px}
+    .mark-card h3{font-family:var(--disp);font-size:var(--text-xl);line-height:1.1;margin-bottom:var(--sp3)}
+    .mark-card p{color:var(--muted);font-size:var(--text-sm);max-width:64ch}
+    footer{padding:var(--sp10) 0;border-top:1px solid var(--div);color:var(--muted);font-size:var(--text-sm)}
+    footer a{color:var(--pri)}
+    @media(max-width:900px){.hero,.g2,.out3{grid-template-columns:1fr}h1{max-width:16ch}.stats{grid-template-columns:1fr}.mark-card{flex-direction:column}.pullquote{padding:var(--sp6)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="hdr">
+  <div class="w hdr-in">
+    <a class="logo" href="#">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 1 0 18 0A9 9 0 0 0 3 12z"/>
+          <path d="M3 12h4m10 0h4M12 3v4m0 10v4"/>
+          <circle cx="12" cy="12" r="2.5"/>
+        </svg>
+      </span>
+      <span class="logo-text">
+        <span class="kicker">Comet · Case Study</span>
+        <span class="logo-name">Gabriel Casalduc</span>
+      </span>
+    </a>
+    <button class="toggle" type="button" data-toggle aria-label="Toggle dark mode">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<main id="content">
+  <div class="w">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Extreme user · Perplexity Comet</span>
+        <h1>From live email thread to actionable outreach intelligence.</h1>
+        <p class="lede">Gabriel Casalduc, founder of <a href="https://myradone.com" target="_blank" rel="noopener">myRadOne</a> and <a href="https://divergent.health" target="_blank" rel="noopener">DIVERGENT.health</a>, used Perplexity Comet to turn a real, open Gmail conversation into a structured business-development workflow — without leaving the browser.</p>
+      </div>
+      <aside class="stat-card">
+        <p>Three concrete outputs from one active browser session, grounded in the live page context.</p>
+        <div class="stats">
+          <div class="stat"><strong>1</strong><span>Gmail thread as live source</span></div>
+          <div class="stat"><strong>4</strong><span>Fund team members surfaced</span></div>
+          <div class="stat"><strong>3</strong><span>Outreach paths mapped</span></div>
+        </div>
+      </aside>
+    </section>
+    <div class="g2">
+      <article class="card">
+        <h2>Context</h2>
+        <p>Gabriel had been corresponding with the Billion Dollar Build / Perplexity Fund team after submitting an application for myRadOne. The thread contained a submission confirmation, a rejection notice, a question about a public project gallery, and a reply pointing to the community Discord.</p>
+        <p>Like most real founder conversations, the thread was simultaneously personal, logistical, and strategically relevant — not tidy material for a typical search or research workflow.</p>
+      </article>
+      <article class="card">
+        <h2>Objective</h2>
+        <p>Gabriel wanted to know whether Comet could do something genuinely useful with that live, messy browser context: extract what mattered, identify the right people at Perplexity Fund, and surface direct contact paths for a credible follow-up.</p>
+        <p>The test was not just information retrieval. It was whether a browser-native AI workflow could close the gap between passive reading and active relationship development.</p>
+      </article>
+    </div>
+    <div class="pullquote">
+      <p>The browser should be an environment for thinking and acting, not just a window for reading.</p>
+      <cite>Gabriel Casalduc — myRadOne.com · DIVERGENT.health</cite>
+    </div>
+    <div class="g2" style="margin-top:var(--sp5)">
+      <article class="card">
+        <h2>Workflow</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div>
+              <h3>Page-grounded summarization</h3>
+              <p>Comet read the open Gmail thread in full and extracted the essential facts: submission confirmed, finalist stage not reached, gallery inquiry answered with a Discord link, draft reply in progress.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div>
+              <h3>Team identification</h3>
+              <p>Public sources were searched to identify the most clearly verified members of the Perplexity Fund team — the actual people behind the fund, not just an inbox address.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <div>
+              <h3>Contact resolution</h3>
+              <p>For each person identified, at least one viable outreach path was surfaced from public data: individual inboxes, shared team inboxes, and confidence levels for each.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <h2>System map</h2>
+        <p>Three distinct data layers — the active tab, the AI reasoning layer, and the public web — were combined in one unbroken browser-native session.</p>
+        <div class="diagram" aria-hidden="true">
+          <svg viewBox="0 0 720 440">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0%" stop-color="var(--pri)" stop-opacity=".18"/>
+                <stop offset="100%" stop-color="var(--pri)" stop-opacity=".75"/>
+              </linearGradient>
+              <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--pri)" opacity=".6"/>
+              </marker>
+            </defs>
+            <rect x="16" y="32" width="166" height="92" rx="16" fill="var(--surfoff)" stroke="var(--bdr)"/>
+            <text x="36" y="72" fill="var(--txt)" font-size="20" font-family="General Sans,sans-serif" font-weight="600">Active tab</text>
+            <text x="36" y="100" fill="var(--muted)" font-size="15" font-family="General Sans,sans-serif">Gmail thread</text>
+            <rect x="277" y="20" width="166" height="116" rx="16" fill="var(--pri-s)" stroke="var(--pri)"/>
+            <text x="298" y="62" fill="var(--pri)" font-size="20" font-family="General Sans,sans-serif" font-weight="700">Comet AI</text>
+            <text x="298" y="90" fill="var(--txt)" font-size="15" font-family="General Sans,sans-serif">Summarize</text>
+            <text x="298" y="112" fill="var(--txt)" font-size="15" font-family="General Sans,sans-serif">Resolve entities</text>
+            <rect x="538" y="32" width="166" height="92" rx="16" fill="var(--blue-s)" stroke="var(--bdr)"/>
+            <text x="558" y="72" fill="var(--txt)" font-size="20" font-family="General Sans,sans-serif" font-weight="600">Public web</text>
+            <text x="558" y="100" fill="var(--muted)" font-size="15" font-family="General Sans,sans-serif">LinkedIn, sites</text>
+            <line x1="182" y1="78" x2="277" y2="78" stroke="url(#g1)" stroke-width="3.5" marker-end="url(#arr)"/>
+            <line x1="443" y1="78" x2="538" y2="78" stroke="url(#g1)" stroke-width="3.5" marker-end="url(#arr)"/>
+            <line x1="360" y1="136" x2="360" y2="220" stroke="url(#g1)" stroke-width="3.5"/>
+            <line x1="360" y1="220" x2="218" y2="260" stroke="url(#g1)" stroke-width="3.5" marker-end="url(#arr)"/>
+            <line x1="360" y1="220" x2="502" y2="260" stroke="url(#g1)" stroke-width="3.5" marker-end="url(#arr)"/>
+            <rect x="100" y="260" width="236" height="104" rx="16" fill="var(--surf)" stroke="var(--bdr)"/>
+            <text x="125" y="300" fill="var(--txt)" font-size="19" font-family="General Sans,sans-serif" font-weight="600">Structured output</text>
+            <text x="125" y="326" fill="var(--muted)" font-size="14" font-family="General Sans,sans-serif">Thread summary · team map</text>
+            <text x="125" y="348" fill="var(--muted)" font-size="14" font-family="General Sans,sans-serif">Contact intelligence</text>
+            <rect x="384" y="260" width="236" height="104" rx="16" fill="var(--gold-s)" stroke="var(--bdr)"/>
+            <text x="408" y="300" fill="var(--txt)" font-size="19" font-family="General Sans,sans-serif" font-weight="600">Action layer</text>
+            <text x="408" y="326" fill="var(--muted)" font-size="14" font-family="General Sans,sans-serif">Outreach-ready contacts</text>
+            <text x="408" y="348" fill="var(--muted)" font-size="14" font-family="General Sans,sans-serif">Credible next steps</text>
+          </svg>
+        </div>
+      </article>
+    </div>
+    <article class="card" style="margin-top:var(--sp5)">
+      <h2>Team intelligence surfaced</h2>
+      <p style="color:var(--muted)">Four publicly verifiable Perplexity Fund team members were identified and matched with at least one viable contact path, all from public sources.</p>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Role</th><th>Contact path</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Kelly Graziadei</td><td>Co-founder & General Partner</td><td><code>kelly@f7ventures.com</code></td></tr>
+          <tr><td>Joanna Lee Shevelenko</td><td>Co-founder & General Partner</td><td><code>hello@f7ventures.com</code></td></tr>
+          <tr><td>Francisca Gilmore-Yulee</td><td>VP, Investment + Platform</td><td><code>hello@perplexityfund.ai</code></td></tr>
+          <tr><td>Kaley Sirak Harder</td><td>Chief of Staff</td><td><code>hello@f7ventures.com</code></td></tr>
+        </tbody>
+      </table>
+    </article>
+    <article class="card" style="margin-top:var(--sp5)">
+      <h2>Outcome</h2>
+      <p style="color:var(--muted)">A single Comet session produced a complete, usable outreach package from an open email thread. The workflow compressed what would normally take several research sessions into one coherent, browser-native interaction.</p>
+      <div class="out3">
+        <div class="stat"><strong>Faster</strong><span>No manual tab-switching or separate research sessions</span></div>
+        <div class="stat"><strong>Sharper</strong><span>Named people and verified contact paths, not a generic inbox</span></div>
+        <div class="stat"><strong>More credible</strong><span>Every output grounded in the live page context Gabriel already had open</span></div>
+      </div>
+    </article>
+    <div class="mark-card">
+      <div class="mark-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+      </div>
+      <div>
+        <h3>What this shows the Perplexity Computer team</h3>
+        <p>Gabriel is an extreme Comet user — a mechanical engineer, product designer, and biomedical researcher who operates across highly technical domains simultaneously. He does not use Comet as a search enhancement. He uses it as a layer of operational intelligence on top of his active browser environment. This session demonstrates a repeatable, high-value workflow pattern: live page as source of truth → AI-assisted entity resolution → public research fill-in → actionable output. The pattern is generalizable and represents exactly the kind of leverage a serious Comet user extracts from the product daily.</p>
+      </div>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="w">
+    Prepared by Gabriel Casalduc · <a href="https://myradone.com" target="_blank" rel="noopener">myRadOne.com</a> · <a href="https://divergent.health" target="_blank" rel="noopener">DIVERGENT.health</a> · June 2026
+  </div>
+</footer>
+<script>
+(function(){
+  const root=document.documentElement,btn=document.querySelector('[data-toggle]');
+  let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  root.setAttribute('data-theme',d);
+  const icon=()=>btn.innerHTML=d==='dark'
+    ?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+    :'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  icon();
+  btn&&btn.addEventListener('click',()=>{d=d==='dark'?'light':'dark';root.setAttribute('data-theme',d);icon()});
+})();
+</script>
+</body>
+</html>
