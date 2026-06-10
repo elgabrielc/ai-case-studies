@@ -10,6 +10,7 @@ These are real workflows, not demos. Each one started from an actual task and do
 
 ### 1. Browser-Native Research and Outreach — Comet
 **[View HTML page for best explanation](https://elgabrielc.github.io/ai-case-studies/)**
+
 **[View Gist for shorter text-only version](https://gist.github.com/elgabrielc/4790a52924ddde74830f932699db6f69)**
 
 Started from a live Gmail thread with the Perplexity Fund team. Comet summarized the thread, identified the full fund team, and surfaced verified personal emails for each member — without leaving the browser tab. Documents how browser-native AI compresses page understanding, stakeholder mapping, and contact discovery into one continuous session.
