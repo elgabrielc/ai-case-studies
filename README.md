@@ -34,3 +34,11 @@ A Claude Code skill that automatically reads PDFs visually when text parsing fai
 ## About
 
 Gabriel Casalduc is a founder at [DIVERGENT.health](https://divergent.health) and [myRadOne.com](https://myradone.com). These case studies reflect deep, day-to-day use of AI tools in a real product and business context.
+
+
+## running list for easy addition on the go
+
+
+https://photos.app.goo.gl/k2CrPLC6eFUyAk6r5
+
+
