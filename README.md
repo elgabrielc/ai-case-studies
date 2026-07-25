@@ -1,8 +1,8 @@
 # AI Case Studies
 
-A curated index of AI workflow case studies by Gabriel Casalduc — built with Claude Code, Comet, and related tools.
+A curated index of AI case studies by Gabriel Casalduc — built with (a d resulting from) Claude Code, Codex, Comet, Grok, Gemini, etc.
 
-These are real workflows, not demos. Each one started from an actual task and documents what happened, how the AI contributed, and why it mattered.
+These are actual occurrences and functioning/attempted workflows, not demos or thought experiments.
 
 ---
 
@@ -33,7 +33,7 @@ A Claude Code skill that automatically reads PDFs visually when text parsing fai
 
 ## About
 
-Gabriel Casalduc is a founder at [DIVERGENT.health](https://divergent.health) and [myRadOne.com](https://myradone.com). These case studies reflect deep, day-to-day use of AI tools in a real product and business context.
+Gabriel Casalduc is the solo founder at [DIVERGENT.health](https://divergent.health) and [myRadOne.com](https://myradone.com). Mechanical engineer via Stanford,turned independent SWE via the inexorable progress of information technology. These case studies illustrate deep, day-to-day use of AI tools in a real product and business context. Also examples of failure modes and complex system orchestration at the bleeding edge of (publicly accessible) AI capabilities. 
 
 
 ## running list for easy addition on the go
