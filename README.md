@@ -41,4 +41,6 @@ Gabriel Casalduc is the solo founder at [DIVERGENT.health](https://divergent.hea
 
 https://photos.app.goo.gl/k2CrPLC6eFUyAk6r5
 
+<img width="1936" height="1256" alt="image" src="https://github.com/user-attachments/assets/5a8dc32a-b9a0-4105-8499-019594952c3f" />
+
 
